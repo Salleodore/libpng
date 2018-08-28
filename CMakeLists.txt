@@ -40,8 +40,8 @@ set(PNGLIB_NAME libpng${PNGLIB_MAJOR}${PNGLIB_MINOR})
 set(PNGLIB_VERSION ${PNGLIB_MAJOR}.${PNGLIB_MINOR}.${PNGLIB_RELEASE})
 
 # needed packages
-find_package(ZLIB REQUIRED)
-include_directories(${ZLIB_INCLUDE_DIR})
+#find_package(ZLIB REQUIRED)
+include_directories(${ZLIB_PUBLIC_HDRS})
 
 if(NOT WIN32)
   find_library(M_LIBRARY
@@ -391,7 +391,7 @@ if(PNG_DEBUG)
 endif()
 
 # NOW BUILD OUR TARGET
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${ZLIB_INCLUDE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${ZLIB_PUBLIC_HDRS})
 
 unset(PNG_LIB_TARGETS)
 
@@ -787,7 +787,7 @@ endif()
 # On versions of CMake that support it, create an export file CMake
 # users can include() to import our targets
 if(PNG_EXPORT_RULE AND NOT SKIP_INSTALL_EXPORT AND NOT SKIP_INSTALL_ALL )
-  install(EXPORT libpng DESTINATION lib/libpng FILE lib${PNG_LIB_NAME}.cmake)
+  #install(EXPORT libpng DESTINATION lib/libpng FILE lib${PNG_LIB_NAME}.cmake)
 endif()
 
 # what's with libpng-manual.txt and all the extra files?
